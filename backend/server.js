@@ -6,6 +6,8 @@ const cors = require("cors");
 
 const userRoute = require("./routes/userRoute")
 
+const errorHandler = require("./middleWare/errorMiddleware")
+
 
 const app = express()
 
@@ -24,10 +26,17 @@ app.get("/" , (req, res)=>{
     res.send("Home page");
 })
 
-const PORT = process.env.PORT  || 5000 ; 
+
+// error middleWare 
+
+app.use(errorHandler);
+
+
+
+
 
 // connect to db and start server
-
+const PORT = process.env.PORT  || 5000 ; 
 mongoose
 .connect(process.env.MONGO_URI)
 .then(()=>{
