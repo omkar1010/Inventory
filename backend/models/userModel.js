@@ -29,7 +29,7 @@ const userSchema = mongoose.Schema({
 photo: {
     type:String,
     required: [true, "please add a photo"],
-    default: ""
+    default: "https://picsum.photos/id/0/367/267"
 },
 
 phone: {
